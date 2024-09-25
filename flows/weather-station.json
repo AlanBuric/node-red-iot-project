@@ -1,0 +1,1755 @@
+[
+    {
+        "id": "c864cba0dd4d7bc7",
+        "type": "subflow",
+        "name": "Process JSON graph time series data",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 60,
+                "y": 80,
+                "wires": [
+                    {
+                        "id": "43f12cef4e96f939"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 580,
+                "y": 80,
+                "wires": [
+                    {
+                        "id": "0eac91754174c64e",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [],
+        "meta": {},
+        "color": "#DDAA99"
+    },
+    {
+        "id": "43f12cef4e96f939",
+        "type": "json",
+        "z": "c864cba0dd4d7bc7",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 190,
+        "y": 80,
+        "wires": [
+            [
+                "0eac91754174c64e"
+            ]
+        ]
+    },
+    {
+        "id": "0eac91754174c64e",
+        "type": "function",
+        "z": "c864cba0dd4d7bc7",
+        "name": "Graph data deduplication",
+        "func": "if (!msg.payload || !msg.payload[0] || !msg.payload[0].data[0]) {\n    return msg;\n}\n\nconst data = msg.payload[0].data[0];\nconst oneDayAgo = Date.now() - 1000 * 60 * 60 * 24;\n\n//const index = data.findIndex((point) => point.x >= oneDayAgo);\n//data.splice(0, index > 0 && (index + 1));\n\nfor (let i = 1; i < data.length - 1; i++) {\n    const prev = data[i - 1];\n    const current = data[i];\n    const next = data[i + 1];\n\n    if (current.y == prev.y && current.y == next.y) {\n        data.splice(i, 1);\n        i--;\n    }\n}\n\nmsg.payload[0].data[0] = data;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 390,
+        "y": 80,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "eb0b26c9a6d532c8",
+        "type": "tab",
+        "label": "Weather station",
+        "disabled": false,
+        "info": "",
+        "env": [
+            {
+                "name": "TEMPERATURE_GRAPH_DATA_PATH",
+                "value": "temperature.json",
+                "type": "str"
+            },
+            {
+                "name": "PRESSURE_GRAPH_DATA_PATH",
+                "value": "pressure.json",
+                "type": "str"
+            },
+            {
+                "name": "WIND_SPEED_GRAPH_DATA_PATH",
+                "value": "windSpeed.json",
+                "type": "str"
+            },
+            {
+                "name": "WEATHERAPI_KEY",
+                "type": "cred"
+            }
+        ]
+    },
+    {
+        "id": "cc730caa8da28e5b",
+        "type": "group",
+        "z": "eb0b26c9a6d532c8",
+        "name": "Periodically fetch current weather data",
+        "style": {
+            "stroke": "#ffC000",
+            "fill": "#ffefbf",
+            "label": true,
+            "label-position": "n",
+            "color": "#000000"
+        },
+        "nodes": [
+            "896c279777cb0949",
+            "f8783b255871d3fe",
+            "8fdec145ad5ec249"
+        ],
+        "x": 1094,
+        "y": 539,
+        "w": 472,
+        "h": 142
+    },
+    {
+        "id": "5940aca3b737fc9f",
+        "type": "group",
+        "z": "eb0b26c9a6d532c8",
+        "name": "Validation and logging",
+        "style": {
+            "stroke": "#3f93cf",
+            "fill": "#bfdbef",
+            "label": true,
+            "color": "#000000",
+            "label-position": "n"
+        },
+        "nodes": [
+            "d24f339947b41bd8",
+            "493d5aab2d7c0311",
+            "d2bc55331d336cef",
+            "12646dc3e969f9bc",
+            "f418eff5ac7b31d1",
+            "01c490928d16ddab",
+            "528d4e3ba6421388"
+        ],
+        "x": 1454,
+        "y": 699,
+        "w": 732,
+        "h": 262
+    },
+    {
+        "id": "6a67bf2435112252",
+        "type": "group",
+        "z": "eb0b26c9a6d532c8",
+        "name": "Push data to Node-RED Dashboard",
+        "style": {
+            "stroke": "#9363b7",
+            "fill": "#dbcbe7",
+            "label": true,
+            "label-position": "n",
+            "color": "#000000"
+        },
+        "nodes": [
+            "9de33939cd903ab3",
+            "baf22ae8f7e75a0f",
+            "b80b2fa89f5531e8",
+            "791bba190b7341e8",
+            "3eb45345ccbf67bd",
+            "2e95d203fb0cad80",
+            "2ac15edddd45f1fe",
+            "1e0ed59b8f5ecbfb",
+            "5a5f7911150e7959",
+            "f8f56a7844acea10",
+            "94a1e819a1ec9077",
+            "9acf716addc0b7a9",
+            "ef8f7f021550da63",
+            "921da8aa0fc4d2d7",
+            "a2e3d45ad938a688",
+            "4faad9bd173df00b",
+            "76953966cf92adee",
+            "b14c16fe971bb12c"
+        ],
+        "x": 1954,
+        "y": 179,
+        "w": 512,
+        "h": 502
+    },
+    {
+        "id": "54a30726a69f2bde",
+        "type": "group",
+        "z": "eb0b26c9a6d532c8",
+        "name": "Dashboard inputs",
+        "style": {
+            "stroke": "#92d04f",
+            "fill": "#e3f3d3",
+            "label": true,
+            "label-position": "n",
+            "color": "#000000"
+        },
+        "nodes": [
+            "d72533d6c2527519",
+            "c0d9bb1eb95f2ba7",
+            "5e47af92151563a2",
+            "0527a9268d9194f1",
+            "10b354a877e2854d",
+            "4246dcde0141299f",
+            "0d1615682ee1feb9"
+        ],
+        "x": 494,
+        "y": 479,
+        "w": 592,
+        "h": 202
+    },
+    {
+        "id": "1c9e06cbf81493f1",
+        "type": "group",
+        "z": "eb0b26c9a6d532c8",
+        "name": "Startup",
+        "style": {
+            "stroke": "#ffff00",
+            "fill": "#ffffbf",
+            "label": true,
+            "label-position": "n",
+            "color": "#000000"
+        },
+        "nodes": [
+            "453b5287922eef5d",
+            "225377726caaed66"
+        ],
+        "x": 34,
+        "y": 479,
+        "w": 452,
+        "h": 82
+    },
+    {
+        "id": "61bd3b69f4b3ed56",
+        "type": "group",
+        "z": "eb0b26c9a6d532c8",
+        "name": "Cloud database",
+        "style": {
+            "stroke": "#3f93cf",
+            "fill": "#bfdbef",
+            "label": true,
+            "label-position": "n",
+            "color": "#000000"
+        },
+        "nodes": [
+            "3839834f693b0ebc",
+            "3ebd84c9f14d066c",
+            "727abc8037d91985"
+        ],
+        "x": 2474,
+        "y": 239,
+        "w": 232,
+        "h": 202
+    },
+    {
+        "id": "8e1f890e3db29764",
+        "type": "group",
+        "z": "eb0b26c9a6d532c8",
+        "name": "Periodically set part of day message",
+        "style": {
+            "stroke": "#9363b7",
+            "fill": "#dbcbe7",
+            "label": true,
+            "label-position": "n",
+            "color": "#000000"
+        },
+        "nodes": [
+            "5eafc266cd2b4354",
+            "37102e4763237800",
+            "1704b68f5fe64f1d"
+        ],
+        "x": 494,
+        "y": 699,
+        "w": 672,
+        "h": 82
+    },
+    {
+        "id": "7857ae918975df39",
+        "type": "group",
+        "z": "eb0b26c9a6d532c8",
+        "name": "Check for sending an alert",
+        "style": {
+            "stroke": "#ff3f3f",
+            "fill": "#ffbfbf",
+            "label": true,
+            "label-position": "n",
+            "color": "#000000"
+        },
+        "nodes": [
+            "6e15760dd8c91ee5",
+            "52446c57cc586326",
+            "cfdf23686565849d",
+            "864f19e80cec9ee8"
+        ],
+        "x": 2174,
+        "y": 39,
+        "w": 932,
+        "h": 122
+    },
+    {
+        "id": "d95019da10362306",
+        "type": "group",
+        "z": "eb0b26c9a6d532c8",
+        "name": "Start cloud database",
+        "style": {
+            "stroke": "#3f93cf",
+            "fill": "#bfdbef",
+            "label": true,
+            "label-position": "n",
+            "color": "#000000"
+        },
+        "nodes": [
+            "807820282b38dfef",
+            "c3e1ef447c36682e",
+            "d58acf6758e642a0",
+            "6e8c1d717720b4e1",
+            "bcbc2518f75eeb48",
+            "41fd71d3e7174687",
+            "a60398648af0491f",
+            "a97a23eb3d8816d7"
+        ],
+        "x": 494,
+        "y": 199,
+        "w": 492,
+        "h": 262
+    },
+    {
+        "id": "4faad9bd173df00b",
+        "type": "junction",
+        "z": "eb0b26c9a6d532c8",
+        "g": "6a67bf2435112252",
+        "x": 2140,
+        "y": 240,
+        "wires": [
+            [
+                "baf22ae8f7e75a0f"
+            ]
+        ]
+    },
+    {
+        "id": "76953966cf92adee",
+        "type": "junction",
+        "z": "eb0b26c9a6d532c8",
+        "g": "6a67bf2435112252",
+        "x": 2140,
+        "y": 300,
+        "wires": [
+            [
+                "f8f56a7844acea10"
+            ]
+        ]
+    },
+    {
+        "id": "b14c16fe971bb12c",
+        "type": "junction",
+        "z": "eb0b26c9a6d532c8",
+        "g": "6a67bf2435112252",
+        "x": 2140,
+        "y": 360,
+        "wires": [
+            [
+                "9acf716addc0b7a9"
+            ]
+        ]
+    },
+    {
+        "id": "e168d13758e937cf",
+        "type": "junction",
+        "z": "eb0b26c9a6d532c8",
+        "x": 1040,
+        "y": 440,
+        "wires": [
+            [
+                "8fdec145ad5ec249"
+            ]
+        ]
+    },
+    {
+        "id": "6be8480ddfa4bb84",
+        "type": "junction",
+        "z": "eb0b26c9a6d532c8",
+        "x": 1060,
+        "y": 380,
+        "wires": [
+            [
+                "8fdec145ad5ec249"
+            ]
+        ]
+    },
+    {
+        "id": "9de33939cd903ab3",
+        "type": "function",
+        "z": "eb0b26c9a6d532c8",
+        "g": "6a67bf2435112252",
+        "name": "Extract temperature",
+        "func": "return {\n    payload: msg.payload.current.temperature\n};",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2070,
+        "y": 280,
+        "wires": [
+            [
+                "baf22ae8f7e75a0f",
+                "52446c57cc586326"
+            ]
+        ]
+    },
+    {
+        "id": "baf22ae8f7e75a0f",
+        "type": "ui_chart",
+        "z": "eb0b26c9a6d532c8",
+        "g": "6a67bf2435112252",
+        "name": "Graph temperature",
+        "group": "b43063455cf6df45",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "label": "Current temperature",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm",
+        "interpolate": "linear",
+        "nodata": "This graph currently has no data.",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": "18",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#0099ff",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 2290,
+        "y": 280,
+        "wires": [
+            [
+                "3839834f693b0ebc"
+            ]
+        ]
+    },
+    {
+        "id": "b80b2fa89f5531e8",
+        "type": "ui_gauge",
+        "z": "eb0b26c9a6d532c8",
+        "g": "6a67bf2435112252",
+        "name": "Gauge humidity",
+        "group": "d4ae4b36c44ecdc2",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "wave",
+        "title": "Current humidity",
+        "label": "%",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#0f6bff",
+            "#ccddff",
+            "#ff0000"
+        ],
+        "seg1": "40",
+        "seg2": "60",
+        "diff": false,
+        "className": "",
+        "x": 2280,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "791bba190b7341e8",
+        "type": "function",
+        "z": "eb0b26c9a6d532c8",
+        "g": "6a67bf2435112252",
+        "name": "Extract humidity",
+        "func": "return {\n    payload: msg.payload.current.humidity\n};",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2060,
+        "y": 460,
+        "wires": [
+            [
+                "b80b2fa89f5531e8"
+            ]
+        ]
+    },
+    {
+        "id": "3eb45345ccbf67bd",
+        "type": "function",
+        "z": "eb0b26c9a6d532c8",
+        "g": "6a67bf2435112252",
+        "name": "Extract UV index",
+        "func": "return {\n    payload: msg.payload.current.uv\n};",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2070,
+        "y": 520,
+        "wires": [
+            [
+                "2e95d203fb0cad80"
+            ]
+        ]
+    },
+    {
+        "id": "2e95d203fb0cad80",
+        "type": "ui_gauge",
+        "z": "eb0b26c9a6d532c8",
+        "g": "6a67bf2435112252",
+        "name": "Gauge UV index",
+        "group": "d4ae4b36c44ecdc2",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "UV index",
+        "label": "",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "11",
+        "colors": [
+            "#00b500",
+            "#fd8a08",
+            "#b30092"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 2280,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "2ac15edddd45f1fe",
+        "type": "ui_text",
+        "z": "eb0b26c9a6d532c8",
+        "g": "6a67bf2435112252",
+        "group": "b43063455cf6df45",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "Display location",
+        "label": "Location:",
+        "format": "{{msg.payload}}",
+        "layout": "row-left",
+        "className": "",
+        "style": true,
+        "font": "",
+        "fontSize": 16,
+        "color": "#0099ff",
+        "x": 2280,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "1e0ed59b8f5ecbfb",
+        "type": "function",
+        "z": "eb0b26c9a6d532c8",
+        "g": "6a67bf2435112252",
+        "name": "Extract location",
+        "func": "const location = msg.payload.location;\n\nreturn {\n    payload: `${location.name}, ${location.region}, ${location.country}`\n};",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2060,
+        "y": 220,
+        "wires": [
+            [
+                "2ac15edddd45f1fe"
+            ]
+        ]
+    },
+    {
+        "id": "d24f339947b41bd8",
+        "type": "catch",
+        "z": "eb0b26c9a6d532c8",
+        "g": "5940aca3b737fc9f",
+        "name": "Catch all errors",
+        "scope": null,
+        "uncaught": true,
+        "x": 1560,
+        "y": 860,
+        "wires": [
+            [
+                "d2bc55331d336cef",
+                "01c490928d16ddab"
+            ]
+        ]
+    },
+    {
+        "id": "493d5aab2d7c0311",
+        "type": "ui_text",
+        "z": "eb0b26c9a6d532c8",
+        "g": "5940aca3b737fc9f",
+        "group": "33faeec56a30e468",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "Display API status",
+        "label": "Weather station status",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "className": "",
+        "style": false,
+        "font": "Tahoma,Geneva,sans-serif",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 2070,
+        "y": 800,
+        "wires": []
+    },
+    {
+        "id": "d2bc55331d336cef",
+        "type": "function",
+        "z": "eb0b26c9a6d532c8",
+        "g": "5940aca3b737fc9f",
+        "name": "Set API failure",
+        "func": "return {\n    payload: msg.error == null ? \"Weather sensors failed\" : `Failure: ${msg.error.message}`\n};",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1800,
+        "y": 860,
+        "wires": [
+            [
+                "493d5aab2d7c0311"
+            ]
+        ]
+    },
+    {
+        "id": "12646dc3e969f9bc",
+        "type": "function",
+        "z": "eb0b26c9a6d532c8",
+        "g": "5940aca3b737fc9f",
+        "name": "Set API success",
+        "func": "return {\n    payload: \"Stable\"\n};",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1800,
+        "y": 800,
+        "wires": [
+            [
+                "493d5aab2d7c0311"
+            ]
+        ]
+    },
+    {
+        "id": "f418eff5ac7b31d1",
+        "type": "switch",
+        "z": "eb0b26c9a6d532c8",
+        "g": "5940aca3b737fc9f",
+        "name": "Validate response",
+        "property": "payload.current",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "neq",
+                "v": "null",
+                "vt": "jsonata"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 2,
+        "x": 1570,
+        "y": 800,
+        "wires": [
+            [
+                "528d4e3ba6421388",
+                "12646dc3e969f9bc"
+            ],
+            [
+                "d2bc55331d336cef"
+            ]
+        ]
+    },
+    {
+        "id": "896c279777cb0949",
+        "type": "http request",
+        "z": "eb0b26c9a6d532c8",
+        "g": "cc730caa8da28e5b",
+        "name": "Get current weather from WeatherAPI",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "query",
+        "url": "http://api.weatherapi.com/v1/current.json",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 1270,
+        "y": 640,
+        "wires": [
+            [
+                "f418eff5ac7b31d1"
+            ]
+        ]
+    },
+    {
+        "id": "f8783b255871d3fe",
+        "type": "change",
+        "z": "eb0b26c9a6d532c8",
+        "g": "cc730caa8da28e5b",
+        "name": "Set query options",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{ }",
+                "tot": "json"
+            },
+            {
+                "t": "set",
+                "p": "payload.q",
+                "pt": "msg",
+                "to": "#:(file)::location",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "payload.key",
+                "pt": "msg",
+                "to": "WEATHERAPI_KEY",
+                "tot": "env"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1450,
+        "y": 580,
+        "wires": [
+            [
+                "896c279777cb0949"
+            ]
+        ]
+    },
+    {
+        "id": "d72533d6c2527519",
+        "type": "ui_form",
+        "z": "eb0b26c9a6d532c8",
+        "g": "54a30726a69f2bde",
+        "name": "Input location",
+        "label": "Change location",
+        "group": "33faeec56a30e468",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "options": [
+            {
+                "label": "Town",
+                "value": "town",
+                "type": "text",
+                "required": true,
+                "rows": null
+            },
+            {
+                "label": "Country",
+                "value": "country",
+                "type": "text",
+                "required": false,
+                "rows": null
+            }
+        ],
+        "formValue": {
+            "town": "",
+            "country": ""
+        },
+        "payload": "",
+        "submit": "submit",
+        "cancel": "cancel",
+        "topic": "payload",
+        "topicType": "msg",
+        "splitLayout": true,
+        "className": "",
+        "x": 590,
+        "y": 580,
+        "wires": [
+            [
+                "c0d9bb1eb95f2ba7"
+            ]
+        ]
+    },
+    {
+        "id": "c0d9bb1eb95f2ba7",
+        "type": "function",
+        "z": "eb0b26c9a6d532c8",
+        "g": "54a30726a69f2bde",
+        "name": "Create and set flow.location",
+        "func": "let location = msg.payload.town;\n\nif (msg.payload.country != null && msg.payload.country.length > 0) {\n    location += `,${msg.payload.country}`;\n}\n\nflow.set(\"location\", location, \"file\");\n\nreturn {\n    payload: {}\n};",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 840,
+        "y": 580,
+        "wires": [
+            [
+                "8fdec145ad5ec249"
+            ]
+        ]
+    },
+    {
+        "id": "5e47af92151563a2",
+        "type": "ui_switch",
+        "z": "eb0b26c9a6d532c8",
+        "g": "54a30726a69f2bde",
+        "name": "Switch unit systems",
+        "label": "Use imperial system units",
+        "tooltip": "Switch on to show all units in imperial system of units, otherwise in the metric system.",
+        "group": "33faeec56a30e468",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "",
+        "topicType": "str",
+        "style": "",
+        "onvalue": "imperialSystem",
+        "onvalueType": "str",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "metricSystem",
+        "offvalueType": "str",
+        "officon": "",
+        "offcolor": "",
+        "animate": false,
+        "className": "",
+        "x": 610,
+        "y": 520,
+        "wires": [
+            [
+                "10b354a877e2854d"
+            ]
+        ]
+    },
+    {
+        "id": "453b5287922eef5d",
+        "type": "inject",
+        "z": "eb0b26c9a6d532c8",
+        "g": "1c9e06cbf81493f1",
+        "name": "Automatically start",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 170,
+        "y": 520,
+        "wires": [
+            [
+                "225377726caaed66",
+                "807820282b38dfef",
+                "1704b68f5fe64f1d"
+            ]
+        ]
+    },
+    {
+        "id": "01c490928d16ddab",
+        "type": "debug",
+        "z": "eb0b26c9a6d532c8",
+        "g": "5940aca3b737fc9f",
+        "name": "Log errors",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1790,
+        "y": 920,
+        "wires": []
+    },
+    {
+        "id": "5a5f7911150e7959",
+        "type": "function",
+        "z": "eb0b26c9a6d532c8",
+        "g": "6a67bf2435112252",
+        "name": "Extract pressure",
+        "func": "return {\n    payload: msg.payload.current.pressure\n};",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2060,
+        "y": 340,
+        "wires": [
+            [
+                "f8f56a7844acea10"
+            ]
+        ]
+    },
+    {
+        "id": "f8f56a7844acea10",
+        "type": "ui_chart",
+        "z": "eb0b26c9a6d532c8",
+        "g": "6a67bf2435112252",
+        "name": "Graph atmospheric pressure",
+        "group": "b43063455cf6df45",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "label": "Atmospheric pressure",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm",
+        "interpolate": "linear",
+        "nodata": "This graph currently has no data.",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": "18",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#0099ff",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 2320,
+        "y": 340,
+        "wires": [
+            [
+                "727abc8037d91985"
+            ]
+        ]
+    },
+    {
+        "id": "0527a9268d9194f1",
+        "type": "ui_text",
+        "z": "eb0b26c9a6d532c8",
+        "g": "54a30726a69f2bde",
+        "group": "33faeec56a30e468",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "name": "Text instructions",
+        "label": "If your data isn't being displayed the first time, you need to configure the location below first.",
+        "format": "",
+        "layout": "row-left",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 980,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "225377726caaed66",
+        "type": "function",
+        "z": "eb0b26c9a6d532c8",
+        "g": "1c9e06cbf81493f1",
+        "name": "Initialize configs",
+        "func": "flow.set(\"metricSystem\", {\n    \"temperatureUnit\": \"c\",\n    \"windUnit\": \"kph\",\n    \"distanceUnit\": \"km\",\n    \"pressureUnit\": \"mb\",\n    \"precipitationUnit\": \"mm\" \n    });\n\nflow.set(\"imperialSystem\", {\n    \"temperatureUnit\": \"f\",\n    \"windUnit\": \"mph\",\n    \"distanceUnit\": \"miles\",\n    \"pressureUnit\": \"in\",\n    \"precipitationUnit\": \"in\"\n});\n\nif (!flow.get(\"unitSystem\", \"file\")) {\n    flow.set(\"unitSystem\", \"metricSystem\", \"file\");\n}\n\nif (!flow.get(\"extremes\", \"file\")) {\n    flow.set(\"extremes\", {\n        hotWeather: 40,\n        freezingWeather: -15\n    }, \"file\");\n}\n\nif (!flow.get(\"weatherApiLocation\", \"file\")) {\n    flow.set(\"weatherApiLocation\", \"London\", \"file\");\n}\n\nreturn {\n    payload: flow.get(\"unitSystem\", \"file\")\n};",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 380,
+        "y": 520,
+        "wires": [
+            [
+                "5e47af92151563a2"
+            ]
+        ]
+    },
+    {
+        "id": "10b354a877e2854d",
+        "type": "change",
+        "z": "eb0b26c9a6d532c8",
+        "g": "54a30726a69f2bde",
+        "name": "Set unit system",
+        "rules": [
+            {
+                "t": "set",
+                "p": "#:(file)::unitSystem",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 800,
+        "y": 520,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "528d4e3ba6421388",
+        "type": "function",
+        "z": "eb0b26c9a6d532c8",
+        "g": "5940aca3b737fc9f",
+        "name": "Process data",
+        "func": "const unitSystem = flow.get(flow.get(\"unitSystem\", \"file\"));\n\nif (!unitSystem) {\n    throw new Error(\"Internal application error: the unit system is undefined.\");\n}\n\nconst data = msg.payload.current;\n\nreturn {\n    payload: {\n        location: msg.payload.location,\n        current: {\n            temperature: data[`temp_${unitSystem.temperatureUnit}`],\n            feelsLike: data[`feelslike_${unitSystem.temperatureUnit}`],\n            windchill: data[`windchill_${unitSystem.temperatureUnit}`],\n            heatIndex: data[`heatIndex_${unitSystem.temperatureUnit}`],\n            dewPoint: data[`dewpoint_${unitSystem.temperatureUnit}`],\n            pressure: data[`pressure_${unitSystem.pressureUnit}`],\n            precipitation: data[`precip_${unitSystem.precipitationUnit}`],\n            wind: data[`wind_${unitSystem.windUnit}`],\n            gust: data[`gust_${unitSystem.windUnit}`],\n            isDay: data.is_day,\n            humidity: data.humidity,\n            windDirection: data.wind_dir,\n            windDegree: data.wind_degree,\n            cloudCover: data.cloud,\n            condition: data.condition,\n            uv: data.uv\n        }\n    }\n};",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1790,
+        "y": 740,
+        "wires": [
+            [
+                "3eb45345ccbf67bd",
+                "791bba190b7341e8",
+                "5a5f7911150e7959",
+                "9de33939cd903ab3",
+                "94a1e819a1ec9077",
+                "ef8f7f021550da63",
+                "a2e3d45ad938a688",
+                "1e0ed59b8f5ecbfb"
+            ]
+        ]
+    },
+    {
+        "id": "3839834f693b0ebc",
+        "type": "file",
+        "z": "eb0b26c9a6d532c8",
+        "g": "61bd3b69f4b3ed56",
+        "name": "Save to database",
+        "filename": "TEMPERATURE_GRAPH_DATA_PATH",
+        "filenameType": "env",
+        "appendNewline": true,
+        "createDir": true,
+        "overwriteFile": "true",
+        "encoding": "none",
+        "x": 2590,
+        "y": 280,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "3ebd84c9f14d066c",
+        "type": "file",
+        "z": "eb0b26c9a6d532c8",
+        "g": "61bd3b69f4b3ed56",
+        "name": "Save to database",
+        "filename": "WIND_SPEED_GRAPH_DATA_PATH",
+        "filenameType": "env",
+        "appendNewline": true,
+        "createDir": true,
+        "overwriteFile": "true",
+        "encoding": "none",
+        "x": 2590,
+        "y": 400,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "8fdec145ad5ec249",
+        "type": "trigger",
+        "z": "eb0b26c9a6d532c8",
+        "g": "cc730caa8da28e5b",
+        "name": "Trigger every 5 minutes",
+        "op1": "{}",
+        "op2": "0",
+        "op1type": "json",
+        "op2type": "str",
+        "duration": "-5",
+        "extend": false,
+        "overrideDelay": false,
+        "units": "min",
+        "reset": "{}",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 1,
+        "x": 1230,
+        "y": 580,
+        "wires": [
+            [
+                "f8783b255871d3fe"
+            ]
+        ]
+    },
+    {
+        "id": "5eafc266cd2b4354",
+        "type": "ui_text",
+        "z": "eb0b26c9a6d532c8",
+        "g": "8e1f890e3db29764",
+        "group": "b43063455cf6df45",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "Display part of day and time",
+        "label": "",
+        "format": "{{msg.payload}}",
+        "layout": "row-left",
+        "className": "",
+        "style": true,
+        "font": "",
+        "fontSize": "20",
+        "color": "#3b3a40",
+        "x": 1020,
+        "y": 740,
+        "wires": []
+    },
+    {
+        "id": "37102e4763237800",
+        "type": "function",
+        "z": "eb0b26c9a6d532c8",
+        "g": "8e1f890e3db29764",
+        "name": "Compute data",
+        "func": "const timesOfDay = [\n    {\n        name: \"night\",\n        from: 0,\n    },\n    {\n        name: \"morning\",\n        from: 5,\n    },\n    {\n        name: \"afternoon\",\n        from: 12,\n    },\n    {\n        name: \"evening\",\n        from: 17,\n    },\n    {\n        name: \"night\",\n        from: 21,\n    }\n];\n\nconst now = new Date();\nconst hour = now.getHours();\nconst currentTime = now.toLocaleString([], { dateStyle: 'medium', timeStyle: 'short' });\n\nconst timeOfDay = timesOfDay.findLast(timeOfDay => timeOfDay.from <= hour);\n\nreturn {\n    payload: `Good ${timeOfDay.name}, it's ${currentTime}.`\n};",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 780,
+        "y": 740,
+        "wires": [
+            [
+                "5eafc266cd2b4354"
+            ]
+        ]
+    },
+    {
+        "id": "94a1e819a1ec9077",
+        "type": "ui_template",
+        "z": "eb0b26c9a6d532c8",
+        "g": "6a67bf2435112252",
+        "group": "b43063455cf6df45",
+        "name": "Display weather icon",
+        "order": 3,
+        "width": "8",
+        "height": "2",
+        "format": "<div style=\"display: flex; align-items: center;\">\n    <img ng-src=\"{{msg.payload.current.condition.icon}}\" ng-alt=\"{{msg.payload.current.condition.text + ' weather'}}\" title=\"{{msg.payload.current.condition.text + ' weather'}}\"/>\n    <span>{{msg.payload.current.condition.text + ' weather'}}</span>\n</div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 2300,
+        "y": 640,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "9acf716addc0b7a9",
+        "type": "ui_chart",
+        "z": "eb0b26c9a6d532c8",
+        "g": "6a67bf2435112252",
+        "name": "Graph wind speed",
+        "group": "b43063455cf6df45",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "label": "Wind speed",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": "18",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#0099ff",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 2290,
+        "y": 400,
+        "wires": [
+            [
+                "3ebd84c9f14d066c"
+            ]
+        ]
+    },
+    {
+        "id": "727abc8037d91985",
+        "type": "file",
+        "z": "eb0b26c9a6d532c8",
+        "g": "61bd3b69f4b3ed56",
+        "name": "Save to database",
+        "filename": "PRESSURE_GRAPH_DATA_PATH",
+        "filenameType": "env",
+        "appendNewline": true,
+        "createDir": true,
+        "overwriteFile": "true",
+        "encoding": "none",
+        "x": 2590,
+        "y": 340,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ef8f7f021550da63",
+        "type": "function",
+        "z": "eb0b26c9a6d532c8",
+        "g": "6a67bf2435112252",
+        "name": "Extract wind speed",
+        "func": "return {\n    payload: msg.payload.current.wind\n};",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2070,
+        "y": 400,
+        "wires": [
+            [
+                "9acf716addc0b7a9"
+            ]
+        ]
+    },
+    {
+        "id": "921da8aa0fc4d2d7",
+        "type": "ui_gauge",
+        "z": "eb0b26c9a6d532c8",
+        "g": "6a67bf2435112252",
+        "name": "Display wind direction",
+        "group": "d4ae4b36c44ecdc2",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "gtype": "compass",
+        "title": "Wind direction",
+        "label": "",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "360",
+        "colors": [
+            "#ffffff",
+            "#7ab4e1",
+            "#424242"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 2300,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "a2e3d45ad938a688",
+        "type": "function",
+        "z": "eb0b26c9a6d532c8",
+        "g": "6a67bf2435112252",
+        "name": "Extract wind direction",
+        "func": "return {\n    payload: msg.payload.current.windDegree\n};",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2080,
+        "y": 580,
+        "wires": [
+            [
+                "921da8aa0fc4d2d7"
+            ]
+        ]
+    },
+    {
+        "id": "6e15760dd8c91ee5",
+        "type": "ui_toast",
+        "z": "eb0b26c9a6d532c8",
+        "g": "7857ae918975df39",
+        "position": "top right",
+        "displayTime": "5",
+        "highlight": "",
+        "sendall": true,
+        "outputs": 0,
+        "ok": "OK",
+        "cancel": "",
+        "raw": false,
+        "className": "",
+        "topic": "",
+        "name": "Send extreme temperature warning",
+        "x": 2940,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "52446c57cc586326",
+        "type": "switch",
+        "z": "eb0b26c9a6d532c8",
+        "g": "7857ae918975df39",
+        "name": "Is temperature extreme?",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "gte",
+                "v": "#:(file)::extremes.hotWeather",
+                "vt": "flow"
+            },
+            {
+                "t": "lte",
+                "v": "#:(file)::extremes.freezingWeather",
+                "vt": "flow"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 2,
+        "x": 2310,
+        "y": 100,
+        "wires": [
+            [
+                "cfdf23686565849d"
+            ],
+            [
+                "864f19e80cec9ee8"
+            ]
+        ]
+    },
+    {
+        "id": "cfdf23686565849d",
+        "type": "change",
+        "z": "eb0b26c9a6d532c8",
+        "g": "7857ae918975df39",
+        "name": "Set hot weather message",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "The weather at this location is extremely high. Stay in shade and remain hydrated!",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 2610,
+        "y": 80,
+        "wires": [
+            [
+                "6e15760dd8c91ee5"
+            ]
+        ]
+    },
+    {
+        "id": "864f19e80cec9ee8",
+        "type": "change",
+        "z": "eb0b26c9a6d532c8",
+        "g": "7857ae918975df39",
+        "name": "Set freezing weather message",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "The weather at this location is extremely cold. Remain warm or seek help!",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 2630,
+        "y": 120,
+        "wires": [
+            [
+                "6e15760dd8c91ee5"
+            ]
+        ]
+    },
+    {
+        "id": "807820282b38dfef",
+        "type": "file in",
+        "z": "eb0b26c9a6d532c8",
+        "g": "d95019da10362306",
+        "name": "Read from database",
+        "filename": "TEMPERATURE_GRAPH_DATA_PATH",
+        "filenameType": "env",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": false,
+        "x": 620,
+        "y": 240,
+        "wires": [
+            [
+                "c3e1ef447c36682e"
+            ]
+        ]
+    },
+    {
+        "id": "c3e1ef447c36682e",
+        "type": "subflow:c864cba0dd4d7bc7",
+        "z": "eb0b26c9a6d532c8",
+        "g": "d95019da10362306",
+        "name": "Process JSON time series",
+        "x": 850,
+        "y": 240,
+        "wires": [
+            [
+                "d58acf6758e642a0",
+                "4faad9bd173df00b"
+            ]
+        ]
+    },
+    {
+        "id": "d58acf6758e642a0",
+        "type": "file in",
+        "z": "eb0b26c9a6d532c8",
+        "g": "d95019da10362306",
+        "name": "Read from database",
+        "filename": "PRESSURE_GRAPH_DATA_PATH",
+        "filenameType": "env",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": false,
+        "x": 620,
+        "y": 300,
+        "wires": [
+            [
+                "6e8c1d717720b4e1"
+            ]
+        ]
+    },
+    {
+        "id": "6e8c1d717720b4e1",
+        "type": "subflow:c864cba0dd4d7bc7",
+        "z": "eb0b26c9a6d532c8",
+        "g": "d95019da10362306",
+        "name": "Process JSON time series",
+        "x": 850,
+        "y": 300,
+        "wires": [
+            [
+                "bcbc2518f75eeb48",
+                "76953966cf92adee"
+            ]
+        ]
+    },
+    {
+        "id": "bcbc2518f75eeb48",
+        "type": "file in",
+        "z": "eb0b26c9a6d532c8",
+        "g": "d95019da10362306",
+        "name": "Read from database",
+        "filename": "WIND_SPEED_GRAPH_DATA_PATH",
+        "filenameType": "env",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": false,
+        "x": 620,
+        "y": 360,
+        "wires": [
+            [
+                "41fd71d3e7174687"
+            ]
+        ]
+    },
+    {
+        "id": "41fd71d3e7174687",
+        "type": "subflow:c864cba0dd4d7bc7",
+        "z": "eb0b26c9a6d532c8",
+        "g": "d95019da10362306",
+        "name": "Process JSON time series",
+        "x": 850,
+        "y": 360,
+        "wires": [
+            [
+                "b14c16fe971bb12c",
+                "6be8480ddfa4bb84"
+            ]
+        ]
+    },
+    {
+        "id": "4246dcde0141299f",
+        "type": "ui_form",
+        "z": "eb0b26c9a6d532c8",
+        "g": "54a30726a69f2bde",
+        "name": "Extreme temperature configuration",
+        "label": "Extreme temperature notifications",
+        "group": "33faeec56a30e468",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "options": [
+            {
+                "label": "Hot weather",
+                "value": "hotWeather",
+                "type": "number",
+                "required": true,
+                "rows": null
+            },
+            {
+                "label": "Freezing weather",
+                "value": "freezingWeather",
+                "type": "text",
+                "required": true,
+                "rows": null
+            }
+        ],
+        "formValue": {
+            "hotWeather": "",
+            "freezingWeather": ""
+        },
+        "payload": "",
+        "submit": "Submit",
+        "cancel": "Cancel",
+        "topic": "topic",
+        "topicType": "msg",
+        "splitLayout": "",
+        "className": "",
+        "x": 660,
+        "y": 640,
+        "wires": [
+            [
+                "0d1615682ee1feb9"
+            ]
+        ]
+    },
+    {
+        "id": "a60398648af0491f",
+        "type": "catch",
+        "z": "eb0b26c9a6d532c8",
+        "g": "d95019da10362306",
+        "name": "Catch uninitialized database",
+        "scope": [
+            "807820282b38dfef",
+            "d58acf6758e642a0",
+            "bcbc2518f75eeb48"
+        ],
+        "uncaught": false,
+        "x": 640,
+        "y": 420,
+        "wires": [
+            [
+                "a97a23eb3d8816d7",
+                "e168d13758e937cf"
+            ]
+        ]
+    },
+    {
+        "id": "a97a23eb3d8816d7",
+        "type": "debug",
+        "z": "eb0b26c9a6d532c8",
+        "g": "d95019da10362306",
+        "name": "Log",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 850,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "0d1615682ee1feb9",
+        "type": "change",
+        "z": "eb0b26c9a6d532c8",
+        "g": "54a30726a69f2bde",
+        "name": "Set extremes",
+        "rules": [
+            {
+                "t": "set",
+                "p": "#:(file)::extremes",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 890,
+        "y": 640,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1704b68f5fe64f1d",
+        "type": "trigger",
+        "z": "eb0b26c9a6d532c8",
+        "g": "8e1f890e3db29764",
+        "name": "Delay task",
+        "op1": "",
+        "op2": "0",
+        "op1type": "pay",
+        "op2type": "str",
+        "duration": "-1",
+        "extend": false,
+        "overrideDelay": true,
+        "units": "min",
+        "reset": "",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 1,
+        "x": 590,
+        "y": 740,
+        "wires": [
+            [
+                "37102e4763237800"
+            ]
+        ]
+    },
+    {
+        "id": "b25b578e94fa00f9",
+        "type": "ui_spacer",
+        "z": "eb0b26c9a6d532c8",
+        "name": "spacer",
+        "group": "33faeec56a30e468",
+        "order": 2,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "b43063455cf6df45",
+        "type": "ui_group",
+        "name": "Live weather data",
+        "tab": "dfa4f5b7a289f386",
+        "order": 3,
+        "disp": true,
+        "width": "10",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "d4ae4b36c44ecdc2",
+        "type": "ui_group",
+        "name": "Gauges",
+        "tab": "dfa4f5b7a289f386",
+        "order": 3,
+        "disp": false,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "33faeec56a30e468",
+        "type": "ui_group",
+        "name": "Configuration",
+        "tab": "dfa4f5b7a289f386",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": true,
+        "className": ""
+    },
+    {
+        "id": "dfa4f5b7a289f386",
+        "type": "ui_tab",
+        "name": "Weather station",
+        "icon": "mi-today",
+        "disabled": false,
+        "hidden": false
+    }
+]

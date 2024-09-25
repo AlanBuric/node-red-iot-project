@@ -1,0 +1,1514 @@
+[
+    {
+        "id": "31502b473722c0e9",
+        "type": "tab",
+        "label": "Time clock system",
+        "disabled": false,
+        "info": "",
+        "env": [
+            {
+                "name": "COMPANY_EMPLOYEES_DATA_PATH",
+                "value": "companyEmployees.json",
+                "type": "str"
+            }
+        ]
+    },
+    {
+        "id": "e407c47134ebc242",
+        "type": "group",
+        "z": "31502b473722c0e9",
+        "name": "Company office",
+        "style": {
+            "stroke": "#a4a4a4",
+            "fill": "#d1d1d1",
+            "label": true,
+            "label-position": "n",
+            "color": "#000000"
+        },
+        "nodes": [
+            "5340d064507dcc26",
+            "fc005c8c5dd5574e",
+            "54f3cd9140a2dbc2",
+            "879fe568ef3406c2"
+        ],
+        "x": 42,
+        "y": 27,
+        "w": 1130,
+        "h": 1226
+    },
+    {
+        "id": "c6abc91d1e88c058",
+        "type": "group",
+        "z": "31502b473722c0e9",
+        "name": "Cloud IoT controller",
+        "style": {
+            "stroke": "#3f93cf",
+            "fill": "#bfdbef",
+            "label": true,
+            "label-position": "n",
+            "color": "#000000"
+        },
+        "nodes": [
+            "44ed84d755d37633",
+            "91bda1e73738cf7d",
+            "e5ebdc99f76d7ff5",
+            "81f5fc16e986e408",
+            "e8255258dbf218e9",
+            "350e034118040eea",
+            "b4f14d5746d41818",
+            "8f78c652a59369fe",
+            "26e997e2b7e0aa34",
+            "c0e3656409bc0263",
+            "83e5fa61814541a2",
+            "8e83554e3eaebba6",
+            "0a010de93d3d9fcc",
+            "c932db79b8c498d8",
+            "f2475be807b500d7",
+            "5a560a40385d28d9",
+            "888e286877378f82",
+            "62d822f7b6fe76b5",
+            "eed09151ffb2b477"
+        ],
+        "x": 1194,
+        "y": 539,
+        "w": 1152,
+        "h": 382
+    },
+    {
+        "id": "5340d064507dcc26",
+        "type": "group",
+        "z": "31502b473722c0e9",
+        "g": "e407c47134ebc242",
+        "name": "Mini-device at main entrance",
+        "style": {
+            "stroke": "#9363b7",
+            "fill": "#dbcbe7",
+            "label": true,
+            "label-position": "n",
+            "color": "#000000"
+        },
+        "nodes": [
+            "e1cc50bacec84b37",
+            "f2f512983fe2fb81"
+        ],
+        "x": 68,
+        "y": 53,
+        "w": 778,
+        "h": 374
+    },
+    {
+        "id": "fc005c8c5dd5574e",
+        "type": "group",
+        "z": "31502b473722c0e9",
+        "g": "e407c47134ebc242",
+        "name": "Mini-device at back door",
+        "style": {
+            "stroke": "#9363b7",
+            "fill": "#dbcbe7",
+            "label": true,
+            "label-position": "n",
+            "color": "#000000"
+        },
+        "nodes": [
+            "370c8cb4d6a6313c",
+            "f7b88d48b57b47a8"
+        ],
+        "x": 68,
+        "y": 453,
+        "w": 778,
+        "h": 374
+    },
+    {
+        "id": "54f3cd9140a2dbc2",
+        "type": "group",
+        "z": "31502b473722c0e9",
+        "g": "e407c47134ebc242",
+        "name": "Mini-device at storage door",
+        "style": {
+            "stroke": "#9363b7",
+            "fill": "#dbcbe7",
+            "label": true,
+            "label-position": "n",
+            "color": "#000000"
+        },
+        "nodes": [
+            "fee69fa116ed6f9e",
+            "4b44df071add0152"
+        ],
+        "x": 68,
+        "y": 853,
+        "w": 778,
+        "h": 374
+    },
+    {
+        "id": "879fe568ef3406c2",
+        "type": "group",
+        "z": "31502b473722c0e9",
+        "g": "e407c47134ebc242",
+        "name": "Internet of Things Gateway",
+        "style": {
+            "label": true,
+            "stroke": "#addb7b",
+            "fill": "#e3f3d3",
+            "label-position": "n",
+            "color": "#000000"
+        },
+        "nodes": [
+            "07e03c7504d9690d",
+            "aff6e29218b17cd0",
+            "9f4bfec9a89f76bc",
+            "60d433138bcce49b"
+        ],
+        "x": 934,
+        "y": 559,
+        "w": 212,
+        "h": 489.5
+    },
+    {
+        "id": "e1cc50bacec84b37",
+        "type": "group",
+        "z": "31502b473722c0e9",
+        "g": "5340d064507dcc26",
+        "name": "Display user interface",
+        "style": {
+            "stroke": "#ffcf3f",
+            "fill": "#ffefbf",
+            "label": true,
+            "label-position": "n",
+            "color": "#000000"
+        },
+        "nodes": [
+            "8abb9cb656c1fd97",
+            "a4106cdf3c104ec3",
+            "6597c63277b2027a",
+            "3a6c1ad63e8b3328",
+            "6b0fb9f2a280c330",
+            "7831a63982fbb872"
+        ],
+        "x": 94,
+        "y": 79,
+        "w": 552,
+        "h": 322
+    },
+    {
+        "id": "f7b88d48b57b47a8",
+        "type": "group",
+        "z": "31502b473722c0e9",
+        "g": "fc005c8c5dd5574e",
+        "name": "Display user interface",
+        "style": {
+            "stroke": "#ffcf3f",
+            "fill": "#ffefbf",
+            "label": true,
+            "label-position": "n",
+            "color": "#000000"
+        },
+        "nodes": [
+            "3c3c8282fd977528",
+            "cf5f6b551de798ae",
+            "bba637bb3a7f8fac",
+            "4c0137aa423e967a",
+            "fb3a05d84bd86bee",
+            "b09508ce14c9f8e2"
+        ],
+        "x": 94,
+        "y": 479,
+        "w": 552,
+        "h": 322
+    },
+    {
+        "id": "fee69fa116ed6f9e",
+        "type": "group",
+        "z": "31502b473722c0e9",
+        "g": "54f3cd9140a2dbc2",
+        "name": "Display user interface",
+        "style": {
+            "stroke": "#ffcf3f",
+            "fill": "#ffefbf",
+            "label": true,
+            "label-position": "n",
+            "color": "#000000"
+        },
+        "nodes": [
+            "45d8bbe881c8fb05",
+            "e32025bda50f8dba",
+            "5597576f39789e48",
+            "c8cab7c73ae3d75c",
+            "a21a3631df45c59b",
+            "1426e5f123e347df"
+        ],
+        "x": 94,
+        "y": 879,
+        "w": 552,
+        "h": 322
+    },
+    {
+        "id": "eed09151ffb2b477",
+        "type": "junction",
+        "z": "31502b473722c0e9",
+        "g": "c6abc91d1e88c058",
+        "x": 2000,
+        "y": 820,
+        "wires": [
+            [
+                "60d433138bcce49b",
+                "888e286877378f82"
+            ]
+        ]
+    },
+    {
+        "id": "8abb9cb656c1fd97",
+        "type": "ui_text_input",
+        "z": "31502b473722c0e9",
+        "g": "e1cc50bacec84b37",
+        "name": "Register presence by ID",
+        "label": "Your organization user ID",
+        "tooltip": "",
+        "group": "d52e3da91c69542e",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "text",
+        "delay": "0",
+        "topic": "registration",
+        "sendOnBlur": false,
+        "className": "",
+        "topicType": "str",
+        "x": 230,
+        "y": 120,
+        "wires": [
+            [
+                "f2f512983fe2fb81"
+            ]
+        ]
+    },
+    {
+        "id": "370c8cb4d6a6313c",
+        "type": "change",
+        "z": "31502b473722c0e9",
+        "g": "fc005c8c5dd5574e",
+        "name": "Attach headers",
+        "rules": [
+            {
+                "t": "set",
+                "p": "timestamp",
+                "pt": "msg",
+                "to": "",
+                "tot": "date"
+            },
+            {
+                "t": "set",
+                "p": "process",
+                "pt": "msg",
+                "to": "1",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 740,
+        "y": 580,
+        "wires": [
+            [
+                "07e03c7504d9690d"
+            ]
+        ]
+    },
+    {
+        "id": "3c3c8282fd977528",
+        "type": "ui_text_input",
+        "z": "31502b473722c0e9",
+        "g": "f7b88d48b57b47a8",
+        "name": "Register presence by ID",
+        "label": "Your organization user ID",
+        "tooltip": "",
+        "group": "334f8cf583b96644",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "text",
+        "delay": "0",
+        "topic": "registration",
+        "sendOnBlur": false,
+        "className": "",
+        "topicType": "str",
+        "x": 230,
+        "y": 520,
+        "wires": [
+            [
+                "370c8cb4d6a6313c"
+            ]
+        ]
+    },
+    {
+        "id": "45d8bbe881c8fb05",
+        "type": "ui_text_input",
+        "z": "31502b473722c0e9",
+        "g": "fee69fa116ed6f9e",
+        "name": "Register presence by ID",
+        "label": "Your organization user ID",
+        "tooltip": "",
+        "group": "69be7ece1ef9751e",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "text",
+        "delay": "0",
+        "topic": "registration",
+        "sendOnBlur": false,
+        "className": "",
+        "topicType": "str",
+        "x": 230,
+        "y": 920,
+        "wires": [
+            [
+                "4b44df071add0152"
+            ]
+        ]
+    },
+    {
+        "id": "07e03c7504d9690d",
+        "type": "switch",
+        "z": "31502b473722c0e9",
+        "g": "879fe568ef3406c2",
+        "name": "Has timestamp?",
+        "property": "timestamp",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "istype",
+                "v": "number",
+                "vt": "number"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 1040,
+        "y": 600,
+        "wires": [
+            [
+                "aff6e29218b17cd0"
+            ]
+        ]
+    },
+    {
+        "id": "aff6e29218b17cd0",
+        "type": "switch",
+        "z": "31502b473722c0e9",
+        "g": "879fe568ef3406c2",
+        "name": "Has payload?",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "istype",
+                "v": "string",
+                "vt": "string"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 1040,
+        "y": 660,
+        "wires": [
+            [
+                "9f4bfec9a89f76bc"
+            ]
+        ]
+    },
+    {
+        "id": "e32025bda50f8dba",
+        "type": "ui_text_input",
+        "z": "31502b473722c0e9",
+        "g": "fee69fa116ed6f9e",
+        "name": "Add a new user",
+        "label": "New organization user ID",
+        "tooltip": "Write the organization's new user ID to be registered.",
+        "group": "2b8692a2a0bcd423",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "text",
+        "delay": "0",
+        "topic": "newUser",
+        "sendOnBlur": false,
+        "className": "",
+        "topicType": "str",
+        "x": 200,
+        "y": 980,
+        "wires": [
+            [
+                "4b44df071add0152"
+            ]
+        ]
+    },
+    {
+        "id": "cf5f6b551de798ae",
+        "type": "ui_text_input",
+        "z": "31502b473722c0e9",
+        "g": "f7b88d48b57b47a8",
+        "name": "Add a new user",
+        "label": "New organization user ID",
+        "tooltip": "Write the organization's new user ID to be registered.",
+        "group": "f63fb6fabf0c08d9",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "text",
+        "delay": "0",
+        "topic": "newUser",
+        "sendOnBlur": false,
+        "className": "",
+        "topicType": "str",
+        "x": 200,
+        "y": 580,
+        "wires": [
+            [
+                "370c8cb4d6a6313c"
+            ]
+        ]
+    },
+    {
+        "id": "a4106cdf3c104ec3",
+        "type": "ui_text_input",
+        "z": "31502b473722c0e9",
+        "g": "e1cc50bacec84b37",
+        "name": "Add a new user",
+        "label": "New organization user ID",
+        "tooltip": "Write the organization's new user ID to be registered.",
+        "group": "799c69664d867c76",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "text",
+        "delay": "0",
+        "topic": "newUser",
+        "sendOnBlur": false,
+        "className": "",
+        "topicType": "str",
+        "x": 200,
+        "y": 180,
+        "wires": [
+            [
+                "f2f512983fe2fb81"
+            ]
+        ]
+    },
+    {
+        "id": "5597576f39789e48",
+        "type": "ui_text_input",
+        "z": "31502b473722c0e9",
+        "g": "fee69fa116ed6f9e",
+        "name": "Remove a user by ID",
+        "label": "Remove organization user by ID",
+        "tooltip": "Write the organization's user ID to remove from the registry.",
+        "group": "2b8692a2a0bcd423",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "text",
+        "delay": "0",
+        "topic": "removeUser",
+        "sendOnBlur": false,
+        "className": "",
+        "topicType": "str",
+        "x": 220,
+        "y": 1040,
+        "wires": [
+            [
+                "4b44df071add0152"
+            ]
+        ]
+    },
+    {
+        "id": "bba637bb3a7f8fac",
+        "type": "ui_text_input",
+        "z": "31502b473722c0e9",
+        "g": "f7b88d48b57b47a8",
+        "name": "Remove a user by ID",
+        "label": "Remove organization user by ID",
+        "tooltip": "Write the organization's user ID to remove from the registry.",
+        "group": "f63fb6fabf0c08d9",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "text",
+        "delay": "0",
+        "topic": "removeUser",
+        "sendOnBlur": false,
+        "className": "",
+        "topicType": "str",
+        "x": 220,
+        "y": 640,
+        "wires": [
+            [
+                "370c8cb4d6a6313c"
+            ]
+        ]
+    },
+    {
+        "id": "6597c63277b2027a",
+        "type": "ui_text_input",
+        "z": "31502b473722c0e9",
+        "g": "e1cc50bacec84b37",
+        "name": "Remove a user by ID",
+        "label": "Remove organization user by ID",
+        "tooltip": "Write the organization's user ID to remove from the registry.",
+        "group": "799c69664d867c76",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "text",
+        "delay": "0",
+        "topic": "removeUser",
+        "sendOnBlur": false,
+        "className": "",
+        "topicType": "str",
+        "x": 220,
+        "y": 240,
+        "wires": [
+            [
+                "f2f512983fe2fb81"
+            ]
+        ]
+    },
+    {
+        "id": "91bda1e73738cf7d",
+        "type": "inject",
+        "z": "31502b473722c0e9",
+        "g": "c6abc91d1e88c058",
+        "name": "Start server",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{}",
+        "payloadType": "json",
+        "x": 1310,
+        "y": 580,
+        "wires": [
+            [
+                "e5ebdc99f76d7ff5"
+            ]
+        ]
+    },
+    {
+        "id": "e5ebdc99f76d7ff5",
+        "type": "file in",
+        "z": "31502b473722c0e9",
+        "g": "c6abc91d1e88c058",
+        "name": "Load database",
+        "filename": "COMPANY_EMPLOYEES_DATA_PATH",
+        "filenameType": "env",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": false,
+        "x": 1560,
+        "y": 580,
+        "wires": [
+            [
+                "350e034118040eea"
+            ]
+        ]
+    },
+    {
+        "id": "44ed84d755d37633",
+        "type": "catch",
+        "z": "31502b473722c0e9",
+        "g": "c6abc91d1e88c058",
+        "name": "Database is uninitialized",
+        "scope": [
+            "e5ebdc99f76d7ff5"
+        ],
+        "uncaught": false,
+        "x": 1350,
+        "y": 640,
+        "wires": [
+            [
+                "81f5fc16e986e408"
+            ]
+        ]
+    },
+    {
+        "id": "81f5fc16e986e408",
+        "type": "change",
+        "z": "31502b473722c0e9",
+        "g": "c6abc91d1e88c058",
+        "name": "Define defaults",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1560,
+        "y": 640,
+        "wires": [
+            [
+                "e8255258dbf218e9"
+            ]
+        ]
+    },
+    {
+        "id": "e8255258dbf218e9",
+        "type": "file",
+        "z": "31502b473722c0e9",
+        "g": "c6abc91d1e88c058",
+        "name": "Create database",
+        "filename": "COMPANY_EMPLOYEES_DATA_PATH",
+        "filenameType": "env",
+        "appendNewline": true,
+        "createDir": true,
+        "overwriteFile": "true",
+        "encoding": "none",
+        "x": 1750,
+        "y": 640,
+        "wires": [
+            [
+                "350e034118040eea"
+            ]
+        ]
+    },
+    {
+        "id": "350e034118040eea",
+        "type": "json",
+        "z": "31502b473722c0e9",
+        "g": "c6abc91d1e88c058",
+        "name": "Parse data",
+        "property": "payload",
+        "action": "obj",
+        "pretty": false,
+        "x": 1970,
+        "y": 580,
+        "wires": [
+            [
+                "8e83554e3eaebba6"
+            ]
+        ]
+    },
+    {
+        "id": "b4f14d5746d41818",
+        "type": "function",
+        "z": "31502b473722c0e9",
+        "g": "c6abc91d1e88c058",
+        "name": "Look up user by ID",
+        "func": "msg.payload = flow.get(\"companyEmployees\")[msg.payload];\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1550,
+        "y": 700,
+        "wires": [
+            [
+                "8f78c652a59369fe"
+            ]
+        ]
+    },
+    {
+        "id": "8f78c652a59369fe",
+        "type": "switch",
+        "z": "31502b473722c0e9",
+        "g": "c6abc91d1e88c058",
+        "name": "User exists?",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "nnull"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 1770,
+        "y": 700,
+        "wires": [
+            [
+                "26e997e2b7e0aa34"
+            ],
+            [
+                "5a560a40385d28d9"
+            ]
+        ]
+    },
+    {
+        "id": "26e997e2b7e0aa34",
+        "type": "function",
+        "z": "31502b473722c0e9",
+        "g": "c6abc91d1e88c058",
+        "name": "Handle registration",
+        "func": "const user = msg.payload;\n\nmsg.success = true;\n\nif (user.current) {\n    const newEntry = {\n        from: user.current,\n        to: msg.timestamp\n    };\n    user.data.push(newEntry);\n    user.current = null;\n    \n    const milliseconds = newEntry.to - newEntry.from;\n    const totalSeconds = Math.floor(milliseconds / 1000);\n    const hours = Math.floor(totalSeconds / 3600);\n    const minutes = Math.floor((totalSeconds % 3600) / 60);\n    const seconds = totalSeconds % 60;\n\n    msg.payload = `You've worked for ${hours} h, ${minutes} mins, and ${seconds} secs.`;\n} else {\n    user.current = msg.timestamp;\n    msg.payload = \"Hello, welcome!\";\n}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1990,
+        "y": 660,
+        "wires": [
+            [
+                "c0e3656409bc0263"
+            ]
+        ]
+    },
+    {
+        "id": "c0e3656409bc0263",
+        "type": "function",
+        "z": "31502b473722c0e9",
+        "g": "c6abc91d1e88c058",
+        "name": "Send response",
+        "func": "return msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2240,
+        "y": 740,
+        "wires": [
+            [
+                "eed09151ffb2b477"
+            ]
+        ]
+    },
+    {
+        "id": "83e5fa61814541a2",
+        "type": "function",
+        "z": "31502b473722c0e9",
+        "g": "c6abc91d1e88c058",
+        "name": "Handle adding user ID",
+        "func": "const existingUser = flow.get(\"companyEmployees\")[msg.payload];\n\nif (existingUser) {\n    msg.success = false;\n    msg.payload = \"An user with that ID already exists!\";\n} else {\n    flow.get(\"companyEmployees\")[msg.payload] = {\n        current: null,\n        data: []\n    };\n\n    msg.success = true;\n    msg.payload = `The user with ID ${msg.payload} has been successfully added.`;\n}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1560,
+        "y": 740,
+        "wires": [
+            [
+                "c0e3656409bc0263"
+            ]
+        ]
+    },
+    {
+        "id": "8e83554e3eaebba6",
+        "type": "change",
+        "z": "31502b473722c0e9",
+        "g": "c6abc91d1e88c058",
+        "name": "Load into memory",
+        "rules": [
+            {
+                "t": "set",
+                "p": "companyEmployees",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 2170,
+        "y": 580,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "0a010de93d3d9fcc",
+        "type": "function",
+        "z": "31502b473722c0e9",
+        "g": "c6abc91d1e88c058",
+        "name": "Delete user by ID",
+        "func": "delete flow.get(\"companyEmployees\")[msg.payload];\n\nmsg.success = true;\nmsg.payload = `The user with the ID ${msg.payload} has been successfully deleted.`;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1550,
+        "y": 780,
+        "wires": [
+            [
+                "c0e3656409bc0263"
+            ]
+        ]
+    },
+    {
+        "id": "4c0137aa423e967a",
+        "type": "ui_text",
+        "z": "31502b473722c0e9",
+        "g": "f7b88d48b57b47a8",
+        "group": "334f8cf583b96644",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "User response",
+        "label": "Response",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 200,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "3a6c1ad63e8b3328",
+        "type": "ui_text",
+        "z": "31502b473722c0e9",
+        "g": "e1cc50bacec84b37",
+        "group": "d52e3da91c69542e",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "User response",
+        "label": "Response",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 200,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "c8cab7c73ae3d75c",
+        "type": "ui_text",
+        "z": "31502b473722c0e9",
+        "g": "fee69fa116ed6f9e",
+        "group": "69be7ece1ef9751e",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "User response",
+        "label": "Response",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 200,
+        "y": 1100,
+        "wires": []
+    },
+    {
+        "id": "fb3a05d84bd86bee",
+        "type": "ui_text",
+        "z": "31502b473722c0e9",
+        "g": "f7b88d48b57b47a8",
+        "group": "f63fb6fabf0c08d9",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "Admin response",
+        "label": "Response",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 200,
+        "y": 760,
+        "wires": []
+    },
+    {
+        "id": "a21a3631df45c59b",
+        "type": "ui_text",
+        "z": "31502b473722c0e9",
+        "g": "fee69fa116ed6f9e",
+        "group": "2b8692a2a0bcd423",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "Admin response",
+        "label": "Response:",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 200,
+        "y": 1160,
+        "wires": []
+    },
+    {
+        "id": "6b0fb9f2a280c330",
+        "type": "ui_text",
+        "z": "31502b473722c0e9",
+        "g": "e1cc50bacec84b37",
+        "group": "799c69664d867c76",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "Admin response",
+        "label": "Response",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 200,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "9f4bfec9a89f76bc",
+        "type": "switch",
+        "z": "31502b473722c0e9",
+        "g": "879fe568ef3406c2",
+        "name": "Has topic?",
+        "property": "topic",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "nnull"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 1030,
+        "y": 720,
+        "wires": [
+            [
+                "c932db79b8c498d8"
+            ]
+        ]
+    },
+    {
+        "id": "c932db79b8c498d8",
+        "type": "switch",
+        "z": "31502b473722c0e9",
+        "g": "c6abc91d1e88c058",
+        "name": "Topic router",
+        "property": "topic",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "registration",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "newUser",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "removeUser",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 4,
+        "x": 1310,
+        "y": 720,
+        "wires": [
+            [
+                "b4f14d5746d41818"
+            ],
+            [
+                "83e5fa61814541a2"
+            ],
+            [
+                "0a010de93d3d9fcc"
+            ],
+            [
+                "f2475be807b500d7"
+            ]
+        ]
+    },
+    {
+        "id": "f2475be807b500d7",
+        "type": "change",
+        "z": "31502b473722c0e9",
+        "g": "c6abc91d1e88c058",
+        "name": "Set unknown topic error",
+        "rules": [
+            {
+                "t": "set",
+                "p": "success",
+                "pt": "msg",
+                "to": "false",
+                "tot": "bool"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "\"Unknown action!\"",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "topic",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1570,
+        "y": 820,
+        "wires": [
+            [
+                "c0e3656409bc0263"
+            ]
+        ]
+    },
+    {
+        "id": "f2f512983fe2fb81",
+        "type": "change",
+        "z": "31502b473722c0e9",
+        "g": "5340d064507dcc26",
+        "name": "Attach headers",
+        "rules": [
+            {
+                "t": "set",
+                "p": "timestamp",
+                "pt": "msg",
+                "to": "",
+                "tot": "date"
+            },
+            {
+                "t": "set",
+                "p": "process",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 740,
+        "y": 200,
+        "wires": [
+            [
+                "07e03c7504d9690d"
+            ]
+        ]
+    },
+    {
+        "id": "4b44df071add0152",
+        "type": "change",
+        "z": "31502b473722c0e9",
+        "g": "54f3cd9140a2dbc2",
+        "name": "Attach headers",
+        "rules": [
+            {
+                "t": "set",
+                "p": "timestamp",
+                "pt": "msg",
+                "to": "",
+                "tot": "date"
+            },
+            {
+                "t": "set",
+                "p": "process",
+                "pt": "msg",
+                "to": "2",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 740,
+        "y": 980,
+        "wires": [
+            [
+                "07e03c7504d9690d"
+            ]
+        ]
+    },
+    {
+        "id": "60d433138bcce49b",
+        "type": "switch",
+        "z": "31502b473722c0e9",
+        "g": "879fe568ef3406c2",
+        "name": "",
+        "property": "process",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "2",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 3,
+        "x": 1010,
+        "y": 1000,
+        "wires": [
+            [
+                "7831a63982fbb872"
+            ],
+            [
+                "b09508ce14c9f8e2"
+            ],
+            [
+                "1426e5f123e347df"
+            ]
+        ]
+    },
+    {
+        "id": "1426e5f123e347df",
+        "type": "switch",
+        "z": "31502b473722c0e9",
+        "g": "fee69fa116ed6f9e",
+        "name": "Admin switch",
+        "property": "topic",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "registration",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 550,
+        "y": 1060,
+        "wires": [
+            [
+                "c8cab7c73ae3d75c"
+            ],
+            [
+                "a21a3631df45c59b"
+            ]
+        ]
+    },
+    {
+        "id": "b09508ce14c9f8e2",
+        "type": "switch",
+        "z": "31502b473722c0e9",
+        "g": "f7b88d48b57b47a8",
+        "name": "Admin switch",
+        "property": "topic",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "registration",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 550,
+        "y": 660,
+        "wires": [
+            [
+                "4c0137aa423e967a"
+            ],
+            [
+                "fb3a05d84bd86bee"
+            ]
+        ]
+    },
+    {
+        "id": "7831a63982fbb872",
+        "type": "switch",
+        "z": "31502b473722c0e9",
+        "g": "e1cc50bacec84b37",
+        "name": "Admin switch",
+        "property": "topic",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "registration",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 550,
+        "y": 260,
+        "wires": [
+            [
+                "3a6c1ad63e8b3328"
+            ],
+            [
+                "6b0fb9f2a280c330"
+            ]
+        ]
+    },
+    {
+        "id": "5a560a40385d28d9",
+        "type": "change",
+        "z": "31502b473722c0e9",
+        "g": "c6abc91d1e88c058",
+        "name": "Set error message",
+        "rules": [
+            {
+                "t": "set",
+                "p": "success",
+                "pt": "msg",
+                "to": "false",
+                "tot": "bool"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "No user with that ID exists.",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1990,
+        "y": 700,
+        "wires": [
+            [
+                "c0e3656409bc0263"
+            ]
+        ]
+    },
+    {
+        "id": "e341f4b7aeb13cf2",
+        "type": "catch",
+        "z": "31502b473722c0e9",
+        "name": "Catch all errors",
+        "scope": null,
+        "uncaught": false,
+        "x": 1280,
+        "y": 960,
+        "wires": [
+            [
+                "129645e1583d732e"
+            ]
+        ]
+    },
+    {
+        "id": "129645e1583d732e",
+        "type": "debug",
+        "z": "31502b473722c0e9",
+        "name": "Log errors",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1470,
+        "y": 960,
+        "wires": []
+    },
+    {
+        "id": "888e286877378f82",
+        "type": "function",
+        "z": "31502b473722c0e9",
+        "g": "c6abc91d1e88c058",
+        "name": "Trigger database save",
+        "func": "return {\n    payload: flow.get(\"companyEmployees\")\n}",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2160,
+        "y": 820,
+        "wires": [
+            [
+                "62d822f7b6fe76b5"
+            ]
+        ]
+    },
+    {
+        "id": "62d822f7b6fe76b5",
+        "type": "file",
+        "z": "31502b473722c0e9",
+        "g": "c6abc91d1e88c058",
+        "name": "Save to database",
+        "filename": "COMPANY_EMPLOYEES_DATA_PATH",
+        "filenameType": "env",
+        "appendNewline": true,
+        "createDir": true,
+        "overwriteFile": "true",
+        "encoding": "none",
+        "x": 2150,
+        "y": 880,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d52e3da91c69542e",
+        "type": "ui_group",
+        "name": "User interface 1",
+        "tab": "5e9af45a6dde267e",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": true,
+        "className": ""
+    },
+    {
+        "id": "334f8cf583b96644",
+        "type": "ui_group",
+        "name": "User interface 2",
+        "tab": "5e9af45a6dde267e",
+        "order": 3,
+        "disp": true,
+        "width": "6",
+        "collapse": true,
+        "className": ""
+    },
+    {
+        "id": "69be7ece1ef9751e",
+        "type": "ui_group",
+        "name": "User interface 3",
+        "tab": "5e9af45a6dde267e",
+        "order": 5,
+        "disp": true,
+        "width": "6",
+        "collapse": true,
+        "className": ""
+    },
+    {
+        "id": "2b8692a2a0bcd423",
+        "type": "ui_group",
+        "name": "Administration 3",
+        "tab": "5e9af45a6dde267e",
+        "order": 6,
+        "disp": true,
+        "width": "6",
+        "collapse": true,
+        "className": ""
+    },
+    {
+        "id": "f63fb6fabf0c08d9",
+        "type": "ui_group",
+        "name": "Administration 2",
+        "tab": "5e9af45a6dde267e",
+        "order": 4,
+        "disp": true,
+        "width": "6",
+        "collapse": true,
+        "className": ""
+    },
+    {
+        "id": "799c69664d867c76",
+        "type": "ui_group",
+        "name": "Administration 1",
+        "tab": "5e9af45a6dde267e",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": true,
+        "className": ""
+    },
+    {
+        "id": "5e9af45a6dde267e",
+        "type": "ui_tab",
+        "name": "Company office",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]

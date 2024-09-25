@@ -1,0 +1,887 @@
+[
+    {
+        "id": "a1a58309709b832e",
+        "type": "tab",
+        "label": "Smart home",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "1e25c541e3723145",
+        "type": "group",
+        "z": "a1a58309709b832e",
+        "name": "Node-RED Dashboard",
+        "style": {
+            "stroke": "#3f93cf",
+            "fill": "#bfdbef",
+            "label": true,
+            "label-position": "n",
+            "color": "#000000"
+        },
+        "nodes": [
+            "1ae7080ca92abe97",
+            "6f80da2dafda408a",
+            "e532bc84384cb4d5",
+            "a0013af0b73c343e"
+        ],
+        "x": 1414,
+        "y": 259,
+        "w": 292,
+        "h": 402
+    },
+    {
+        "id": "21d69dc4840f664b",
+        "type": "group",
+        "z": "a1a58309709b832e",
+        "name": "Internet of Things Gateway",
+        "style": {
+            "stroke": "#92d04f",
+            "fill": "#e3f3d3",
+            "label": true,
+            "label-position": "n",
+            "color": "#000000"
+        },
+        "nodes": [
+            "6e0ce6f0bb05b17b",
+            "c84601c84d5ff08d",
+            "860366629870e990",
+            "0fe4528aaee4b359",
+            "e69f3febbcfd5271",
+            "c63b66e23c90921e",
+            "9c4db7c4d9bbb242",
+            "65bf5829ad3e6959",
+            "6a1690cb703db313",
+            "0b7a3e2953107c13",
+            "39b418af153b7371",
+            "18ac6cddf33fb513",
+            "c69ae74a5d8eccc0",
+            "124c9551bd985223",
+            "0748036369ee8d98"
+        ],
+        "x": 394,
+        "y": 199,
+        "w": 772,
+        "h": 522
+    },
+    {
+        "id": "124c9551bd985223",
+        "type": "junction",
+        "z": "a1a58309709b832e",
+        "g": "21d69dc4840f664b",
+        "x": 920,
+        "y": 520,
+        "wires": [
+            [
+                "a0013af0b73c343e"
+            ]
+        ]
+    },
+    {
+        "id": "7839c12df924288b",
+        "type": "inject",
+        "z": "a1a58309709b832e",
+        "name": "Outdoor motion sensor",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "outdoorLights",
+        "payload": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 680,
+        "wires": [
+            [
+                "a70b4a5f4a7c5d21"
+            ]
+        ]
+    },
+    {
+        "id": "1ae7080ca92abe97",
+        "type": "ui_switch",
+        "z": "a1a58309709b832e",
+        "g": "1e25c541e3723145",
+        "name": "Garage door open",
+        "label": "Garage door open",
+        "tooltip": "",
+        "group": "cf2a1ab17331554d",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "user",
+        "topicType": "str",
+        "style": "",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "lock_open",
+        "oncolor": "#334155",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "lock",
+        "offcolor": "#334155",
+        "animate": true,
+        "className": "",
+        "x": 1530,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "6f80da2dafda408a",
+        "type": "ui_switch",
+        "z": "a1a58309709b832e",
+        "g": "1e25c541e3723145",
+        "name": "Front door lock",
+        "label": "Unlock front door",
+        "tooltip": "",
+        "group": "cf2a1ab17331554d",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "user",
+        "topicType": "str",
+        "style": "",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "lock_open",
+        "oncolor": "#334155",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "lock",
+        "offcolor": "#334155",
+        "animate": false,
+        "className": "",
+        "x": 1520,
+        "y": 420,
+        "wires": [
+            [
+                "0b7a3e2953107c13",
+                "6a1690cb703db313"
+            ]
+        ]
+    },
+    {
+        "id": "e532bc84384cb4d5",
+        "type": "ui_switch",
+        "z": "a1a58309709b832e",
+        "g": "1e25c541e3723145",
+        "name": "Outdoor lights",
+        "label": "Outdoor lights",
+        "tooltip": "Toggle the lights in front of the house",
+        "group": "cf2a1ab17331554d",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "user",
+        "topicType": "str",
+        "style": "",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "mi-lightbulb",
+        "oncolor": "#fde047",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "mi-lightbulb",
+        "offcolor": "#334155",
+        "animate": false,
+        "className": "",
+        "x": 1520,
+        "y": 620,
+        "wires": [
+            [
+                "3f4ef9e2144a37d4"
+            ]
+        ]
+    },
+    {
+        "id": "6e0ce6f0bb05b17b",
+        "type": "switch",
+        "z": "a1a58309709b832e",
+        "g": "21d69dc4840f664b",
+        "name": "Only if it's dark outside",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "lte",
+                "v": "7",
+                "vt": "num"
+            },
+            {
+                "t": "gte",
+                "v": "18",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 540,
+        "y": 680,
+        "wires": [
+            [
+                "c84601c84d5ff08d"
+            ],
+            [
+                "c84601c84d5ff08d"
+            ]
+        ]
+    },
+    {
+        "id": "c84601c84d5ff08d",
+        "type": "change",
+        "z": "a1a58309709b832e",
+        "g": "21d69dc4840f664b",
+        "name": "Turn on the outdoor lights",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "true",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 930,
+        "y": 680,
+        "wires": [
+            [
+                "0748036369ee8d98",
+                "e532bc84384cb4d5"
+            ]
+        ]
+    },
+    {
+        "id": "9c4db7c4d9bbb242",
+        "type": "change",
+        "z": "a1a58309709b832e",
+        "g": "21d69dc4840f664b",
+        "name": "Set turn off and delay",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "false",
+                "tot": "bool"
+            },
+            {
+                "t": "set",
+                "p": "delay",
+                "pt": "msg",
+                "to": "#:(file)::outdoorLightsDuration",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 840,
+        "y": 620,
+        "wires": [
+            [
+                "65bf5829ad3e6959"
+            ]
+        ]
+    },
+    {
+        "id": "65bf5829ad3e6959",
+        "type": "trigger",
+        "z": "a1a58309709b832e",
+        "g": "21d69dc4840f664b",
+        "name": "Schedule turn off",
+        "op1": "",
+        "op2": "",
+        "op1type": "pay",
+        "op2type": "pay",
+        "duration": "10",
+        "extend": true,
+        "overrideDelay": false,
+        "units": "s",
+        "reset": "",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 2,
+        "x": 1050,
+        "y": 620,
+        "wires": [
+            [],
+            [
+                "e532bc84384cb4d5"
+            ]
+        ]
+    },
+    {
+        "id": "4d40cee986927056",
+        "type": "inject",
+        "z": "a1a58309709b832e",
+        "name": "Garage motion sensor",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "garageMotion",
+        "payload": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 240,
+        "wires": [
+            [
+                "f2db0a97b4abcf82"
+            ]
+        ]
+    },
+    {
+        "id": "860366629870e990",
+        "type": "switch",
+        "z": "a1a58309709b832e",
+        "g": "21d69dc4840f664b",
+        "name": "Is garage door closed?",
+        "property": "garageDoorOpen",
+        "propertyType": "flow",
+        "rules": [
+            {
+                "t": "false"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 540,
+        "y": 240,
+        "wires": [
+            [
+                "1ddd340852c53788"
+            ]
+        ]
+    },
+    {
+        "id": "1ddd340852c53788",
+        "type": "function",
+        "z": "a1a58309709b832e",
+        "name": "Camera: take a photo of the driveway",
+        "func": "return msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 870,
+        "y": 40,
+        "wires": [
+            [
+                "09295ed49c2586da"
+            ]
+        ]
+    },
+    {
+        "id": "09295ed49c2586da",
+        "type": "function",
+        "z": "a1a58309709b832e",
+        "name": "AI: detect owner's registration plate",
+        "func": "return {\n    payload: Math.random()\n};",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 860,
+        "y": 100,
+        "wires": [
+            [
+                "0fe4528aaee4b359"
+            ]
+        ]
+    },
+    {
+        "id": "0fe4528aaee4b359",
+        "type": "switch",
+        "z": "a1a58309709b832e",
+        "g": "21d69dc4840f664b",
+        "name": "Is it owner's car?",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "gte",
+                "v": "0.2",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 1050,
+        "y": 240,
+        "wires": [
+            [
+                "e69f3febbcfd5271"
+            ]
+        ]
+    },
+    {
+        "id": "e69f3febbcfd5271",
+        "type": "change",
+        "z": "a1a58309709b832e",
+        "g": "21d69dc4840f664b",
+        "name": "Send open garage door signal",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "true",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1010,
+        "y": 300,
+        "wires": [
+            [
+                "9161ea4db395a9ae"
+            ]
+        ]
+    },
+    {
+        "id": "3feb495b533d3f42",
+        "type": "inject",
+        "z": "a1a58309709b832e",
+        "name": "Front door is locked",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "frontDoorLock",
+        "payload": "",
+        "payloadType": "date",
+        "x": 130,
+        "y": 420,
+        "wires": [
+            [
+                "ebb04254a965ba9b"
+            ]
+        ]
+    },
+    {
+        "id": "f2db0a97b4abcf82",
+        "type": "delay",
+        "z": "a1a58309709b832e",
+        "name": "Rate limit ",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 320,
+        "y": 240,
+        "wires": [
+            [
+                "860366629870e990"
+            ]
+        ]
+    },
+    {
+        "id": "a70b4a5f4a7c5d21",
+        "type": "delay",
+        "z": "a1a58309709b832e",
+        "name": "Rate limit ",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 320,
+        "y": 680,
+        "wires": [
+            [
+                "6e0ce6f0bb05b17b"
+            ]
+        ]
+    },
+    {
+        "id": "ebb04254a965ba9b",
+        "type": "delay",
+        "z": "a1a58309709b832e",
+        "name": "Rate limit ",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 320,
+        "y": 420,
+        "wires": [
+            [
+                "c63b66e23c90921e"
+            ]
+        ]
+    },
+    {
+        "id": "c63b66e23c90921e",
+        "type": "change",
+        "z": "a1a58309709b832e",
+        "g": "21d69dc4840f664b",
+        "name": "Send front door lock signal",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "false",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1020,
+        "y": 420,
+        "wires": [
+            [
+                "6f80da2dafda408a"
+            ]
+        ]
+    },
+    {
+        "id": "0b7a3e2953107c13",
+        "type": "switch",
+        "z": "a1a58309709b832e",
+        "g": "21d69dc4840f664b",
+        "name": "If door was locked",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "false"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 1050,
+        "y": 360,
+        "wires": [
+            [
+                "9161ea4db395a9ae"
+            ]
+        ]
+    },
+    {
+        "id": "9161ea4db395a9ae",
+        "type": "change",
+        "z": "a1a58309709b832e",
+        "name": "Control garage door",
+        "rules": [
+            {
+                "t": "set",
+                "p": "garageDoorOpen",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1300,
+        "y": 300,
+        "wires": [
+            [
+                "1ae7080ca92abe97"
+            ]
+        ]
+    },
+    {
+        "id": "289dbe8173186d3a",
+        "type": "change",
+        "z": "a1a58309709b832e",
+        "name": "Control front door lock",
+        "rules": [
+            {
+                "t": "set",
+                "p": "frontDoorUnlock",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1300,
+        "y": 480,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "6a1690cb703db313",
+        "type": "change",
+        "z": "a1a58309709b832e",
+        "g": "21d69dc4840f664b",
+        "name": "If user toggled",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1060,
+        "y": 480,
+        "wires": [
+            [
+                "289dbe8173186d3a"
+            ]
+        ]
+    },
+    {
+        "id": "39b418af153b7371",
+        "type": "inject",
+        "z": "a1a58309709b832e",
+        "g": "21d69dc4840f664b",
+        "name": "Initialization",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 510,
+        "y": 300,
+        "wires": [
+            [
+                "18ac6cddf33fb513"
+            ]
+        ]
+    },
+    {
+        "id": "18ac6cddf33fb513",
+        "type": "function",
+        "z": "a1a58309709b832e",
+        "g": "21d69dc4840f664b",
+        "name": "Configure defaults",
+        "func": "flow.set(\"garageDoorOpen\", false);\nflow.set(\"frontDoorUnlock\", false);\n\nif (flow.get(\"outdoorLightsDuration\", \"file\") == null) {\n    flow.set(\"outdoorLightsDuration\", 10, \"file\");\n}\n\nreturn {\n    payload: flow.get(\"outdoorLightsDuration\", \"file\")\n};",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 710,
+        "y": 300,
+        "wires": [
+            [
+                "124c9551bd985223"
+            ]
+        ]
+    },
+    {
+        "id": "a0013af0b73c343e",
+        "type": "ui_numeric",
+        "z": "a1a58309709b832e",
+        "g": "1e25c541e3723145",
+        "name": "Input outdoor light duration",
+        "label": "Outdoor light duration in seconds",
+        "tooltip": "Sets for how long in seconds the outdoor lights will be turned on after being triggered by the motion sensor.",
+        "group": "cf2a1ab17331554d",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "wrap": false,
+        "passthru": true,
+        "topic": "outdoorLightDuration",
+        "topicType": "str",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "86400",
+        "step": 1,
+        "className": "",
+        "x": 1560,
+        "y": 560,
+        "wires": [
+            [
+                "c69ae74a5d8eccc0"
+            ]
+        ]
+    },
+    {
+        "id": "c69ae74a5d8eccc0",
+        "type": "change",
+        "z": "a1a58309709b832e",
+        "g": "21d69dc4840f664b",
+        "name": "Set new outdoor lights duration",
+        "rules": [
+            {
+                "t": "set",
+                "p": "#:(file)::outdoorLightsDuration",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1010,
+        "y": 560,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "0748036369ee8d98",
+        "type": "switch",
+        "z": "a1a58309709b832e",
+        "g": "21d69dc4840f664b",
+        "name": "If off",
+        "property": "outdoorLights",
+        "propertyType": "flow",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 670,
+        "y": 620,
+        "wires": [
+            [
+                "9c4db7c4d9bbb242"
+            ]
+        ]
+    },
+    {
+        "id": "3f4ef9e2144a37d4",
+        "type": "change",
+        "z": "a1a58309709b832e",
+        "name": "Control outdoor lights",
+        "rules": [
+            {
+                "t": "set",
+                "p": "outdoorLights",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1820,
+        "y": 620,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "cf2a1ab17331554d",
+        "type": "ui_group",
+        "name": "Switches",
+        "tab": "0ca2fdafe2d00bf0",
+        "order": 1,
+        "disp": true,
+        "width": "8",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "0ca2fdafe2d00bf0",
+        "type": "ui_tab",
+        "name": "Smart home",
+        "icon": "tune",
+        "disabled": false,
+        "hidden": false
+    }
+]
